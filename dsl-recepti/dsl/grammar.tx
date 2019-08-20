@@ -1,0 +1,91 @@
+Program:
+    commands *= Command[';']
+    ;
+
+
+Command
+    : Create_recipe
+    | Search_recipe
+    ;
+
+Create_recipe
+    : "ADD RECIPE" recipe_name=STRING
+        ("IN CATEGORY" category=Category ","
+        "INGREDIENTS" "(" ingredients*=Ingredient[','] ")" ","
+        "STEPS" "(" steps*=Step[','] ")" ","
+        "PREPARATION TIME" time=Time "," "PREPARATION WEIGHT " weight=Weight)?
+    ;
+
+Search_recipe
+    : "VIEW RECIPE WHICH" criteri*= Search_command[',']
+    ;
+
+Search_command
+    : Search_by_name
+    | Search_by_category
+    | Search_by_weight
+    | Search_by_time
+    | Search_by_ingredient
+    ;
+
+Search_by_name
+    : "NAME IS " name=STRING
+    ;
+
+Search_by_category
+    : "CATEGORY IS " category=Category
+    ;
+
+Search_by_weight
+    : "WEIGHT IS " weight=Weight
+    ;
+
+Search_by_time
+    : "TIME " op=Operator time=INT
+    ;
+
+Search_by_ingredient
+    :"CONTAINS INGREDIENTS " ingredients*=STRING[',']
+    ;
+
+
+Operator
+    : "IS"
+    | "LESS THAN"
+    | "GREATHER THAN"
+    ;
+
+Ingredient
+    : quantity=Quantity ingredient_name=STRING
+    ;
+
+Step
+    : "STEP" no=INT ":" step_doing=STRING
+    ;
+
+Quantity
+    : q=INT  unitMeasure=Unit
+    ;
+
+Unit
+    : "g" | "kg" | "spoon" | "cup" | "ml" | "l" | "dl"
+    ;
+
+Category
+    : "SANDWICH"|"MAIN COURSE" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER"
+    ;
+Weight
+    :   "EASY" | "MIDDLE" | "HARD"
+    ;
+
+Time
+    : time=INT "min"
+    ;
+
+
+
+
+Comment
+    :   /\/\/.*$/
+    ;
+

@@ -1,0 +1,123 @@
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/images/breadcumb3.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2>Recipe</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="col-12 col-lg-12"> </div>
+<div class="receipe-content-area">
+        <div class="container">
+                <div class="col-12 col-lg-12"> </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="contact-form-area">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="name" placeholder="Name">
+                                    </div>
+                                    <div class="col-12 col-lg-6"></div>
+                                    <div class="col-12 col-lg-6">
+                                        <select name="selectKind" id="selectKind" class="form-control">
+                                                <option value="1">SANDWICHES</option>
+                                                <option value="2">BREAKFAST</option>
+                                                <option value="3">DINNER</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-12 col-lg-12"></div>
+                                    
+                                    <div class="col-12 col-lg-3">
+                                        <input type="number" class="form-control" min="0" id="time" placeholder="Time">
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <label> min </label>
+                                    </div>
+                                    <div class="col-12 col-lg-12"></div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <select class="form-control" name="selectWeight" id="selectWeight">
+                                            <option value="1"> Easy </option>
+                                            <option value="2"> Middle</option>
+                                            <option value="3"> Hard </option>
+                                        </select>    
+                                    </div>
+
+                                    <div class="col-12 col-lg-6"></div>
+
+                                    <div class="col-12" id="ingredients">
+                                        <div class="row" id="div_1">
+                                            <div class="col-12 col-lg-2">
+                                                <input type="number" min="0" name="ing" class="form-control" id="quantity" step="0.1" placeholder="Quantity">
+                                            </div>
+                                            <div class="col-12 col-lg-2">
+                                                <select name="selectIngUnit" id="selectIngUnit" placeholder="Unit" class="form-control">
+                                                    <option> g </option>
+                                                    <option> kg </option>
+                                                    <option> ml </option>
+                                                    <option> dl </option>
+                                                    <option> l </option>
+                                                    <option> spoon </option>
+                                                    <option> cup </option>											
+                                                </select>
+                                            </div>
+
+                                            <div class="col-12 col-lg-6">
+                                                <input type="text" class="form-control" id="ing_name" placeholder="Name">
+                                            </div>
+
+                                            <div class="col-12 col-lg-1">
+                                                <input class="btn" id="plus_1" type="button"  value="+">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12"></div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-12"></div>
+
+                                    <div class="col-12" id="steps">
+                                        <div class="row" id="step_plus_1">
+                                            <div class="col-12 col-lg-10">
+                                                <h4> 01. </h4> <textarea name="step" class="form-control" id="step_text_1" cols="15" rows="3" placeholder="Step"></textarea>
+                                            </div>
+                                            <div class="col-12 col-lg-1">
+                                                    <input class="btn" id="step_plus_1" (onclick)="appendStep($event)"     type="button" value="+">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn delicious-btn mt-30" type="submit"> Add receipe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+</div>
+       
+  
+
+   <footer class="footer-area">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+                   
+                    <!-- Footer Logo -->
+                    <div class="footer-logo">
+                        <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
