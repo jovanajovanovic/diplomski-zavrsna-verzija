@@ -29,7 +29,7 @@ def addNewRecipe(command):
                 #ubacimo potrebno vreme pripreme
                 pt = c.time.time
 
-                r = Recipe(name=c.recipe_name, weight=c.weight, category=c.category, preparationTime=pt)
+                r = Recipe(name=c.recipe_name, weight=c.weight, category=c.category, time=pt)
                 r.save()
                 #ubacimo svaki sastojak posebno
                 ingredients = []
@@ -48,7 +48,7 @@ def addNewRecipe(command):
                     steps.append(StepDto(num=st.numOfStep, desc=st.description))
              #   dto = RecipeDTO(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=ptdto)
 
-                dto = RecipeDto(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=r.preparationTime)
+                dto = RecipeDto(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=r.time)
                 return dto, True
     except:
         e = sys.exc_info()[0]

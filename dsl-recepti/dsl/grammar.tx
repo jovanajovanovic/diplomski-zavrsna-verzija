@@ -68,7 +68,7 @@ Quantity
     ;
 
 Unit
-    : "g" | "kg" | "spoon" | "cup" | "ml" | "l" | "dl"
+    : "g" | "kg" | "spoon" | "small spoon" | "big spoon"  | "cup" | "ml" | "l" | "dl"
     ;
 
 Category

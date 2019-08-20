@@ -8,7 +8,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=200)
     weight = models.CharField(max_length=200)
-    preparationTime = models.PositiveIntegerField()
+    time = models.PositiveIntegerField()
 
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete = models.CASCADE)

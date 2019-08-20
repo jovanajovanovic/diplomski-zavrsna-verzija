@@ -13,7 +13,7 @@ def getAllRecipe():
 def searchRecipeFunc(command):
 
     try:
-        model = create_model("VIEW RECIPE WHICH NAME IS 'plazma torta'")
+        model = create_model(command)
 
         name = ""
         category = ""
@@ -43,33 +43,87 @@ def searchRecipeFunc(command):
                     elif com.__class__.__name__ == "Search_by_ingredient":
                         ingredients = com.ingredients
 
-        data = search(name, category, weight, time, op, ingredients)
-        data = serializers.serialize("json", data)
-        return data
+        data = search(name, category, weight, time, op)
+
+        print(len(ingredients))
+        if len(ingredients) >0 :
+            recipies = search_by_ingredients(ingredients)
+            res = set()
+            print(len(recipies))
+            for i in recipies:
+                if recipies.__contains__(i):
+                    res.add(i)
+            return serializers.serialize("json", res)
+
+        else:
+            data = serializers.serialize("json", data)
+            return data
     except:
         print("error")
 
-def search(name, category, weight, time, op, ingredients):
+def search(name1, category, weight, time1, op):
     #ako ne postoji name onda necemo ni traziti po njemu
 
-    if name is not "":
-        print ("Pretraga po imenu")
-        data1 = Recipe.objects.filter(name=name)
+    q = Recipe.objects.all()
 
-    if category is not "":
-        print("Pretraga po kategoriji")
-        data2 = Recipe.objects.all().filter(category = category)
+    q1 = q.filter(name__startswith=name1).filter(category__startswith=category).filter(weight__startswith=weight)
 
-    if weight is not "":
-        print("Pretraga po tezini")
-        data3 = Recipe.objects.all().filter(weight=weight)
 
-    if len(ingredients) > 0:
-        data4 = set()
-        for i in ingredients:
-            data4.add(Ingredient.objects.all().filter(name=i))
+    #JOS PROVERITI VREME
 
-    if len(data1) > 0:
-        result = data1
+    if time1 != 0:
+        if op == "LESS THAN":
+            q2 = q1.filter(time__lte= time1)
+        elif op == "GREATHER THAN":
+            q2 = q1.filter(time__gte= time1)
+        else:
+            q2 = q1.filter(time = time1)
+
+
+    if (time1 != 0):
+        return q2
+    else:
+        return q1
+
+
+def search_by_ingredients(ingredients):
+    result = set()
+    q = Ingredient.objects.all()
+    res = set()
+    for i in ingredients:
+        print(i)
+        q1 = q.filter(name__contains=i)
+        print(len(q1))
+        res.add(q1)
+
+    print(len(res))
+    #izvucemo sve pk-od recepata
+    for m in res:
+        print(len(m))
+        for i in m:
+            print(i.recipe.id)
+            result.add(i.recipe)
 
     return result
+
+
+def search_recipies_byId(id):
+    result = Recipe.objects.filter(pk=id)
+    print(result)
+    return  serializers.serialize("json", result)
+
+def search_ingredients_by_recipe(recipe_id):
+
+    result = Recipe.objects.filter(pk=recipe_id)
+    res = result[0]
+    ingredients = Ingredient.objects.filter(recipe = res)
+    return  serializers.serialize("json", ingredients)
+
+def search_steps_by_recipe(recipe_id):
+
+    result = Recipe.objects.filter(pk=recipe_id)
+    res = result[0]
+    steps_dto = []
+    steps = Step.objects.filter(recipe = res)
+
+    return serializers.serialize("json", steps)
