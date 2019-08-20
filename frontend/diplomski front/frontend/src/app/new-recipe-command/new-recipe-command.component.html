@@ -28,7 +28,7 @@
                                 </div>
                                 <!-- u ostatku cemo ispisati mogu vrednosti za neke stvari-->
                                 <div class="col-12 col-lg-4">
-                                    <select name="selectOption" id="selectOption">
+                                    <select name="selectOption" id="selectOption" class="form-control"  (change)="onChange($event)">
                                         <option value="1"> Command for new recipe </option>
                                         <option value="2"> Weight category </option>
                                         <option value="3"> Time unit </option>
@@ -76,7 +76,7 @@
                
                 <!-- Footer Logo -->
                 <div class="footer-logo">
-                    <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                    <a (click)="router.navigate(['/main'])"><img src="assets/images/logo.png" alt=""></a>
                 </div>
                 
             </div>

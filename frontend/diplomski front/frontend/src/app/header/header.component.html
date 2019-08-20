@@ -9,7 +9,7 @@
                     <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                        <a class="nav-brand" (click)="router.navigate(['/main'])"><img src="assets/images/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -29,8 +29,8 @@
                                     <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
                                             <button class="btn btn-outline-success" ngbDropdownToggle>New recipe</button>
                                             <div class="dropdown-menu" ngbDropdownMenu>
-                                              <button ngbDropdownItem>Forms</button>
-                                              <button ngbDropdownItem>Commands</button>
+                                              <button ngbDropdownItem (click)="router.navigate(['/main/newRecipeForm'])">Forms</button>
+                                              <button ngbDropdownItem (click)="router.navigate(['/main/newRecipeCommand'])">Commands</button>
                                             </div>
                                           </div>
                                

@@ -74,7 +74,7 @@
                                             </div>
 
                                             <div class="col-12 col-lg-1">
-                                                <input class="btn" id="plus_1" type="button"  value="+">
+                                                <input class="btn" id="plus_1" type="button" (click)="appendIng($event)" value="+">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-12"></div>
@@ -83,12 +83,12 @@
                                     <div class="col-12 col-lg-12"></div>
 
                                     <div class="col-12" id="steps">
-                                        <div class="row" id="step_plus_1">
+                                        <div class="row" id="div_step_1">
                                             <div class="col-12 col-lg-10">
                                                 <h4> 01. </h4> <textarea name="step" class="form-control" id="step_text_1" cols="15" rows="3" placeholder="Step"></textarea>
                                             </div>
                                             <div class="col-12 col-lg-1">
-                                                    <input class="btn" id="step_plus_1" (onclick)="appendStep($event)"     type="button" value="+">
+                                                    <input class="btn" id="step_plus_1" (click)="appendStep($event)"     type="button" value="+">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-12"></div>
@@ -114,7 +114,7 @@
                    
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                        <a (click)="router.navigate(['/main'])"><img src="assets/images/logo.png" alt=""></a>
                     </div>
                     
                 </div>
