@@ -10,6 +10,7 @@
   <li> Python 3.6 </li>
   <li> TextX </li> 
   <li> Django </li>
+	<li> Angular </li>
   </ul> 
 
 <h3> Pokretanje programa </h3> 
