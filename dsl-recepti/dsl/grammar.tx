@@ -10,10 +10,10 @@ Command
 
 Create_recipe
     : "ADD RECIPE" recipe_name=STRING
-        ("IN CATEGORY" category=Category ","
+        "IN CATEGORY" category=Category ","
         "INGREDIENTS" "(" ingredients*=Ingredient[','] ")" ","
         "STEPS" "(" steps*=Step[','] ")" ","
-        "PREPARATION TIME" time=Time "," "PREPARATION WEIGHT " weight=Weight)?
+        "PREPARATION TIME" time=Time "," "PREPARATION WEIGHT " weight=Weight
     ;
 
 Search_recipe
@@ -72,7 +72,7 @@ Unit
     ;
 
 Category
-    : "SANDWICH"|"MAIN COURSE" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER"
+    : "SANDWICH"|"LUNCH" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER" | "SOUP" | "BREAKFAST"
     ;
 Weight
     :   "EASY" | "MIDDLE" | "HARD"

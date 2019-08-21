@@ -9,21 +9,54 @@ import { Recipie} from '../model/Recipie'
 })
 export class ViewRecipiesComponent implements OnInit {
 
+  categories = ["SANDWICH", "BREAKFAST", "APPETIZER", "SALAD", "DINNER", "LUNCH", "SOUP", "HRONO", "DESERT"];
+  
+   weights= ["EASY", "MIDDLE", "HARD"];
+
+  name: string = '';
+  ingredients :string = '';
+  time: number = 0;
+  op : string = '=';
+  weight : string = '';
+  category: string = '';
+
+
+  prikaziJedan : boolean;
+
+  oneRecipie : Recipie;
   recipies : Recipie[];
   message : string;
   constructor(private router: Router, private recipieService : RecipeService) { }
 
   ngOnInit() {
+    this.getRecipies();
+    this.prikaziJedan = false;
+  }
+
+
+  getRecipies(){
     this.recipieService.getRecipie()
     .subscribe(data => {
       this.recipies = data;
+      
     },error => {
       this.message= error.error;
-    })
-
-    this.recipies.forEach(element => {
-      alert(element)
     });
+
   }
 
+
+  chosenRecipie(r){
+    this.oneRecipie = r;
+    this.prikaziJedan = true;
+  }
+
+
+  clickDelicious(){
+    this.prikaziJedan = false;
+  }
+
+  search(){
+    alert("ime " + this.name + " tezina: " + this.weight + " kategorija " + this.category + " op " + this.op + " time " + this.time + " ingredients "  + this.ingredients);
+  }
 }

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NewRecipeCommandComponent implements OnInit {
 
+  command : string = '';
   constructor(private router : Router) { }
 
   ngOnInit() {
@@ -29,9 +30,6 @@ export class NewRecipeCommandComponent implements OnInit {
       }else if (val == "2"){
         //easy, middle, hard
         newText += '<p><ul> <li> EASY </li> <li> MIDDLE </li> <li> HARD </li></ul></p>'
-      }else if (val == "3"){
-        //h ili m 
-        newText += '<p><ul> <li> h </li> <li> min </li> </ul></p>'
       }else if (val == "4"){
         //g, kg, ml, dl, l, spoon, cup
         newText += '<p><ul> <li>g </li> kg<li></li><li>ml</li> <li> dl </li> <li> l </li> <li> spooon </li> <li> cup </li> <ul></p>' 
@@ -42,5 +40,9 @@ export class NewRecipeCommandComponent implements OnInit {
       
       $("#description").append(newText);
     
+  }
+
+  addRecipe(){
+    alert(this.command);
   }
 }

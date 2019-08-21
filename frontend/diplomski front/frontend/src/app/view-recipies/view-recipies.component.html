@@ -1,46 +1,76 @@
-<section class="top-catagory-area section-padding-80-0">
+
+<div *ngIf="prikaziJedan==false" class="receipe-post-search mb-80">
+        <div class="container">
+                <div class="row">
+                        <div class="col-12 col-lg-2">
+                                <input type="search" class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
+
+                            </div>
+                        <div class="col-12 col-lg-2">
+                                <select class="nice-select" name="category" id="category" [(ngModel)]="category">
+                                    <option *ngFor= "let c of categories" value="{{c}}">{{c}}</option>
+                                    
+                                </select>
+                            </div>
+                    <div class="col-12 col-lg-2">
+                        <select class="nice-select" name="weight" id="weight" [(ngModel)]="weight">
+                            <option *ngFor="let w of weights" value="{{w}}">{{w}}</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-lg-1">
+                            <select class="nice-select" name="operator" id="operator" [(ngModel)]="op" >
+                                <option value="1">"<"</option>
+                                <option value="2">">"</option>
+                            </select>
+                        </div>
+                    <div class="col-12 col-lg-1">
+                            <input type="number" min=0 placeholder="Time" class="form-control" [(ngModel)]="time">
+
+                    </div>
+                    <div class="col-12 col-lg-2"> 
+                        <input type="search" class="form-control" name="search" placeholder="Ingredients" [(ngModel)]="ingredients">
+                    </div>
+                    
+                    <div class="col-12 col-lg-2 text-right">
+                        <button type="submit" class="btn delicious-btn" (click)="search()">Search</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+<section *ngIf="prikaziJedan==false" class="top-catagory-area section-padding-80-0">
         <div class="container">
             <div class="row">
                 <!-- ovde ce se ispisati recepti koje imamo, klikom na see full receipe prikazace se jedan konkretan recept -->
-                <div class="col-12 col-lg-6">
-                    <div class="single-top-catagory">
-                        <img src="assets/images/bg2.jpg" alt="">
-                        <!-- Content -->
-                        <div class="top-cta-content">
-                            <h3>Strawberry Cake</h3>
-                            <h6>Simple &amp; Delicios</h6>
-                            <a (click)="router.navigate(['/main/viewRecipe'])" class="btn delicious-btn">See Full Receipe</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Top Catagory Area -->
-                <div class="col-12 col-lg-6">
-                    <div class="single-top-catagory">
-                        <img src="assets/images/bg3.jpg" alt="">
-                        <!-- Content -->
-                        <div class="top-cta-content">
-                            <h3>Chinesse Noodles</h3>
-                            <h6>Simple &amp; Delicios</h6>
-                            <a href="receipe-post.html" class="btn delicious-btn">See Full Receipe</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
+                
+                    <div class="col-12 col-lg-6" *ngFor="let r of recipies">
                         <div class="single-top-catagory">
-                            <img src="assets/images/bg3.jpg" alt="">
+                            <img *ngIf="r.fields.category=='DESERT'" src="assets/images/bg2.jpg" alt="">
+                            <img *ngIf="r.fields.category=='SOUP'" src="assets/images/bg5.jpg" alt="">
+                            <img *ngIf="r.fields.category=='SANDWICH'" src="assets/images/bg2.jpg" alt="">
+                            <img *ngIf="r.fields.category=='BREAKFAST'" src="assets/images/bg5.jpg" alt="">
+                            <img *ngIf="r.fields.category=='DINNER'" src="assets/images/bg2.jpg" alt="">
+                            <img *ngIf="r.fields.category=='LUNCH'" src="assets/images/bg5.jpg" alt="">
+                            <img *ngIf="r.fields.category=='HRONO'" src="assets/images/bg2.jpg" alt="">
+                            <img *ngIf="r.fields.category=='SALAD'" src="assets/images/bg5.jpg" alt="">
+                            <img *ngIf="r.fields.category=='APPETIZER'" src="assets/images/bg2.jpg" alt="">
                             <!-- Content -->
                             <div class="top-cta-content">
-                                <h3>Chinesse Noodles</h3>
-                                <h6>Simple &amp; Delicios</h6>
-                                <a href="receipe-post.html" class="btn delicious-btn">See Full Receipe</a>
+                                <h3>{{r.fields.name}}</h3>
+                                <h6>{{r.fields.category}}</h6>
+                                <a (click)="chosenRecipie(r)" class="btn delicious-btn">See Full Receipe</a>
                             </div>
                         </div>
                     </div>
+                
             </div>
+                
         </div>
     </section>
     <!-- ##### Top Catagory Area End ##### -->
-
+<div *ngIf="prikaziJedan==true">
+    <app-view-recipe [recipe]="oneRecipie"></app-view-recipe>
+</div>
     
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -50,7 +80,7 @@
                     
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a (click)="router.navigate(['/main'])"><img src="assets/images/logo.png" alt=""></a>
+                        <a (click)="clickDelicious()"><img src="assets/images/logo.png" alt=""></a>
                     </div>
                    
                 </div>

@@ -4,6 +4,10 @@ import { VirtualTimeScheduler } from 'rxjs';
 
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
+import { IngredientField, StepField, Recipie } from '../model/Recipie';
+import { RecipeService } from '../services/recipe.service';
+
+
 
 @Component({
   selector: 'app-new-recipe-form',
@@ -12,101 +16,79 @@ import { Router } from '@angular/router';
 })
 export class NewRecipeFormComponent implements OnInit {
 
-  constructor(private router: Router) { }
+   units = ["g", "kg", "ml", "dl", "l", "small spoon", "big spoon", "cup"];
 
-  id : string;
-  new_id : number;
-  stepNum: any;
+  categories = ["SANDWICH", "BREAKFAST", "APPETIZER", "SALAD", "DINNER", "LUNCH", "SOUP", "HRONO", "DESERT"];
+  
+   weights= ["EASY", "MIDDLE", "HARD"];
 
+  constructor(private router: Router, private service : RecipeService ) { }
+
+  ingItems : IngredientField [] = [];
+  stepItems : StepField[] = [];
+  stepNum : number;
+  ingNum : number;
+
+  recipeName : string = '';
+  category : string = '' ;
+  weight : string  = '';
+  time : number = 0;
+  
   ngOnInit() {
+    this.recipeName = '';
+    this.category = '';
+    this.weight = '';
+    this.time = 0;
+    var i = {
+      name :'',
+      quantity : '0.0',
+      unit : 'g'
+    };
+    this.ingItems.push(i);
+    this.ingNum = 1;
+    this.stepNum = 1;
+
+    var s= {
+      numOfStep : this.stepNum, 
+      description : ''
+    }
+    this.stepItems.push(s);
   }
 
-  appendIng(event){
-    var id = event.target.attributes.id.value;
-    alert(id);
-   // document.getElementById(id).style.visibility = 'hidden';
-  
-    var tokens = id.split("_");
-    var num_id = parseInt(tokens[1]) + 1;
-    $("#ingridients").append('<div class="row" id="div_' + num_id + '"> <div class="col-12 col-lg-2"> <input type="number" min="0" name="ing" class="form-control" id="quantity" step="0.1" placeholder="Quantity"></div>'+
-    '<div class="col-12 col-lg-2"><select name="selectIngUnit" id="selectIngUnit" placeholder="Unit" class="form-control">'+
-      '<option> g </option>' +
-      '<option> kg </option>' +
-      '<option> ml </option>' +
-      '<option> dl </option>' +
-      '<option> l </option>' +
-      '<option> spoon </option>'+
-      '<option> cup </option>'+
-    '</select> </div>'+
-  '<div class="col-12 col-lg-6"> <input type="text" class="form-control" id="name" placeholder="Name">  </div>'+
-  '<div class="col-12 col-lg-1">	<input class="btn" id="plus_' + num_id + '" type="button" onclick="appendIng(this)" value="+"></input></div>' + 
-  '<div class="col-12 col-lg-1">	<input class="btn" id="minus_' + num_id + '" type="button" onclick="deleteIng(this)" value="-"></input></div>' +
-  '<div class="col-12 col-lg-12"> </div> </div>');
- // document.getElementById("minus_" + tokens[1]).style.visibility = 'hidden';
-  }
-  
-  deleteIng(event){
-    var id = event.target.attributes.id.value;
-    var tokens = id.split("_");
-    var idNum = tokens[1];
-    var deleteE = "div_" + idNum;
-    var elem = document.getElementById("div_" + idNum);
-    elem.remove();
-    //ovaj izbrise a prethodnom treba da doda plus 
-    var plus_id = idNum - 1;
-   // document.getElementById("plus_" + plus_id).style.visibility = 'visible';
-  ///  document.getElementById("minus_" + plus_id).style.visibility = 'visible';
-    
-    
-  }
-
-
-  appendStep(value){
-    alert(value.target.attributes.id.value)
-    this.id = value.target.attributes.id.value;
-    //$("#" + this.id ).css({'background-color': 'yellow', 'font-size': '200%'});
-    //document.getElementById(this.id).style.visibility = 'hidden';
-    this.id = this.id.split("_")[2];
-    alert(this.id)
-    
-    this.new_id = parseInt(this.id) + 1;
-    this.stepNum = 0;
-    if (this.new_id < 10){
-      this.stepNum = "0" + this.new_id + ".";
-    } else {
-      this.stepNum = this.new_id + ".";
+  addStep(){
+    this.stepNum = this.stepNum +1;
+    var s  = {
+        numOfStep : this.stepNum, 
+        description : ''
     }
 
-    $("#steps").append('<div class="row" id="div_step_' + this.new_id +'">' +
-											'<div class="col-12 col-lg-10"> ' +
-												'<h4>' + this.stepNum + '<textarea name="step" class="form-control" id="step_text_'+this.new_id +'" cols="15" rows="5" placeholder="Step"> </textarea> '+
-											'</div>' +
-											'<div class="col-12 col-lg-1">' +
-												'<input class="btn" id="step_plus_' + this.new_id +'" type="button" (click)="appendStep($event)"  value="+"></input> </div> '+
-												'<div class="col-12 col-lg-1"> <input class="btn" id="step_minus_' + this.new_id +'" type="button" (click)="deleteStep($event)" value="-"></input> ' +
-											'</div>'+
-										'</div>' +
-										'<div class="col-12 col-lg-12"> </div>');
-			
-			
-			//cim doda novi step treba da obrise minus od prethodnog 
-			//document.getElementById("step_minus_" + this.id).style.visibility = 'hidden';
+    this.stepItems.push(s);
     
-}
+  }
 
-deleteStep(event){
-  var id = event.target.attributes.id.value;
-  alert(id);
-  var tokens = id.split("_");
-  var idNum = tokens[2];
-  var deleteE = "div_" + idNum;
-  var elem = document.getElementById("div_step_" + idNum);
-  elem.remove();
-  //ovaj izbrise a prethodnom treba da doda plus i minus 
-  var plus_id = idNum - 1;
-  //document.getElementById("step_plus_" + plus_id).style.visibility = 'visible';
-  //document.getElementById("step_minus_" + plus_id).style.visibility = 'visible';
+  deleteStep(){
+    //brisemo poslednji korak 
+    this.stepItems.pop();
+    this.stepNum = this.stepNum -1; 
+  }
   
-  
-}
+
+  addIng(){
+    var i = {
+      name :'',
+      quantity : '0.0',
+      unit : 'g'
+    };
+    this.ingItems.push(i);
+    this.ingNum = this.ingNum + 1; 
+  }
+
+  deleteIng(){
+    this.ingItems.pop();
+    this.ingNum = this.ingNum - 1;
+  }
+
+  addRecipe(){
+    this.service.newFormRecipe(this.recipeName, this.weight, this.category, this.time, this.ingItems, this.stepItems);
+  }
 }

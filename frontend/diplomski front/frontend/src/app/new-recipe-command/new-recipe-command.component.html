@@ -21,37 +21,34 @@
             <div class="row">
                 <div class="col-12">
                     <div class="contact-form-area">
-                        <form action="#" method="post">
                             <div class="row">
                                 <div class="col-12 col-lg-8">
-                                    <textarea name="command" class="form-control" id="command" cols="30" rows="10" placeholder="Write a new recipe"> </textarea>
+                                    <textarea name="command" class="form-control" id="command" cols="30" rows="10" placeholder="Write a new recipe" [(ngModel)]="command"> </textarea>
                                 </div>
                                 <!-- u ostatku cemo ispisati mogu vrednosti za neke stvari-->
                                 <div class="col-12 col-lg-4">
-                                    <select name="selectOption" id="selectOption" class="form-control"  (change)="onChange($event)">
+                                    <select name="selectOption" id="selectOption" class="nice-select"  (change)="onChange($event)">
                                         <option value="1"> Command for new recipe </option>
                                         <option value="2"> Weight category </option>
-                                        <option value="3"> Time unit </option>
                                         <option value="4"> Measurement unit </option>
                                         <option value="5"> Category </option> 
                                     </select>
                                     
                                     <div id="description">
                                         <p> 
-                                            <strong>ADD RECIPE</strong> "recipe_name"
-                                            <strong>IN CATEGORY</strong> "name of category",
-                                            <strong>INGREDIENTS </strong>( "quantity" "measurement unit" "name of ingredient" [','] ),
-                                            <strong>STEPS</strong>( number of step : "description" [','] ),
-                                            <strong>PREPARATION TIME </strong> time "time unit", <strong> PREPARATION WEIGHT </strong> weight
+                                            <strong>ADD RECIPE</strong> 'recipe_name'
+                                            <strong>IN CATEGORY</strong> name of category,
+                                            <strong>INGREDIENTS </strong>( quantity unit 'name of ingredient' [','] ),
+                                            <strong>STEPS</strong>( STEP number of step : 'description' [','] ),
+                                            <strong>PREPARATION TIME </strong> time min , <strong> PREPARATION WEIGHT </strong> weight
                                         </p>
                                     </div>
                                 </div>
                                     
                                 <div class="col-12">
-                                    <button class="btn delicious-btn mt-30" type="submit">Add receipe</button>
+                                    <button class="btn delicious-btn mt-30" (click)="addRecipe()" type="submit">Add receipe</button>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

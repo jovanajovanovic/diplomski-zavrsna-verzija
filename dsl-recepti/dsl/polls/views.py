@@ -30,8 +30,7 @@ def getAllRecipe(request):
 
 
 @api_view(['GET'])
-def getRecipeById(request):
-    id = request.data.get("id") #prepraviti da bude u zahtevu
+def getRecipeById(request, id):
     print(str(id))
     result = searchRecipe.search_recipies_byId(id)
     return HttpResponse(result, content_type="application/json")
@@ -48,15 +47,13 @@ def search(request):
     return HttpResponse(result, content_type="application/json")
 
 @api_view(['GET'])
-def getIngredientsByRecipe(request):
-    id = request.data.get("id") #prepraviti da bude u zahtevu
+def getIngredientsByRecipe(request, id):
     print(str(id))
     result = searchRecipe.search_ingredients_by_recipe(id)
     return HttpResponse(result, content_type="application/json")
 
 @api_view(['GET'])
-def getStepsByRecipe(request):
-    id = request.data.get("id") #prepraviti da bude u zahtevu
+def getStepsByRecipe(request, id):
     print(str(id))
     result = searchRecipe.search_steps_by_recipe(id)
     return HttpResponse(result, content_type="application/json")

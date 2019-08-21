@@ -1,6 +1,7 @@
 export interface Recipie{
     pk? : number;
-    fields : RecipieField[];
+    model : string;
+    fields : RecipieField;
 }
 
 
@@ -14,7 +15,7 @@ export interface RecipieField{
 
 export interface Ingredient {
     pk? : number;
-    fields : IngredientField[];
+    fields : IngredientField;
 }
 
 export interface IngredientField{
