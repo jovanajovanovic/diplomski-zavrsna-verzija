@@ -5,7 +5,7 @@ from django.core import serializers
 
 
 def getAllRecipe():
-    data = serializers.serialize("json",Recipe.objects.all().filter(name='plazma torta'))
+    data = serializers.serialize("json",Recipe.objects.all())
 
     return data
 
@@ -44,17 +44,23 @@ def searchRecipeFunc(command):
                         ingredients = com.ingredients
 
         data = search(name, category, weight, time, op)
-
+        for d in data:
+            print("Pretraga osim sastojaka: ", d)
+        print("Pretraga po svim kriterijumima osim sastojaka: ", len(data))
         print(len(ingredients))
-        if len(ingredients) >0 :
+        if len(ingredients) > 0 :
             recipies = search_by_ingredients(ingredients)
             res = set()
+            print("Posle pretrage po sastojcima ima: ", len(recipies))
+            for r in recipies:
+                print("Pretraga sa sastojcima " , r)
             print(len(recipies))
-            for i in recipies:
+            for i in data:
                 if recipies.__contains__(i):
+                    print("Postoji u obe liste")
                     res.add(i)
+            print("Na kraju ima recepata ", len(res))
             return serializers.serialize("json", res)
-
         else:
             data = serializers.serialize("json", data)
             return data
@@ -66,7 +72,7 @@ def search(name1, category, weight, time1, op):
 
     q = Recipe.objects.all()
 
-    q1 = q.filter(name__startswith=name1).filter(category__startswith=category).filter(weight__startswith=weight)
+    q1 = q.filter(name__contains=name1).filter(category__contains=category).filter(weight__contains=weight)
 
 
     #JOS PROVERITI VREME
@@ -87,7 +93,7 @@ def search(name1, category, weight, time1, op):
 
 
 def search_by_ingredients(ingredients):
-    result = set()
+    result = set() #ovde smestamo sve pronadjene recepte
     q = Ingredient.objects.all()
     res = set()
     for i in ingredients:
@@ -97,14 +103,22 @@ def search_by_ingredients(ingredients):
         res.add(q1)
 
     print(len(res))
-    #izvucemo sve pk-od recepata
+    #treba posebno za svaki sastojak napraviti listu i onda napraviti njihove presek
+    result2 = set() # ovo vracamo
+
+    if (len(ingredients)==1):
+        for r in res:
+            for n in r:
+                result.add(n.recipe)
+        return result
+
     for m in res:
-        print(len(m))
         for i in m:
             print(i.recipe.id)
+            if result.__contains__(i.recipe):
+                result2.add(i.recipe)
             result.add(i.recipe)
-
-    return result
+    return result2
 
 
 def search_recipies_byId(id):

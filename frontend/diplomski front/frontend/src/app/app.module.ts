@@ -13,7 +13,7 @@ import { NewRecipeCommandComponent } from './new-recipe-command/new-recipe-comma
 import { SearchComponent } from './search/search.component';
 import { ViewRecipiesComponent } from './view-recipies/view-recipies.component';
 import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
-
+import {RecipeService} from '../app/services/recipe.service'
 
 const appRoutes : Routes = [
   {
@@ -52,7 +52,8 @@ const appRoutes : Routes = [
     )
   ],
   providers: [
-    NgbDropdown
+    NgbDropdown,
+    RecipeService
   ],
   bootstrap: [AppComponent]
 })
