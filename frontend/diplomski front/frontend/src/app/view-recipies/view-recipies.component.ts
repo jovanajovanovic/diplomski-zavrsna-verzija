@@ -9,9 +9,11 @@ import { Recipie} from '../model/Recipie'
 })
 export class ViewRecipiesComponent implements OnInit {
 
-  categories = ["SANDWICH", "BREAKFAST", "APPETIZER", "SALAD", "DINNER", "LUNCH", "SOUP", "HRONO", "DESERT"];
+  categories = ["SANDWICH", "BREAKFAST", "APPETIZER", "SALAD", "DINNER", "LUNCH", "SOUP", "HRONO", "DESERT", "PIZZA", "BURGER", ""];
   
-   weights= ["EASY", "MIDDLE", "HARD"];
+   weights= ["EASY", "MIDDLE", "HARD", ""];
+
+  operators = [{"value": "IS", "op" : "="}, {"value" : "LESS THAN", "op" : "<"}, {"value": "GREATHER THAN", "op": ">"}, {"value": "", "op" : ""}];
 
   name: string = '';
   ingredients :string = '';
@@ -47,8 +49,7 @@ export class ViewRecipiesComponent implements OnInit {
 
 
   chosenRecipie(r){
-    this.oneRecipie = r;
-    this.prikaziJedan = true;
+    this.router.navigate(['/main/viewRecipe'],  {queryParams: {recipe: r.pk}});
   }
 
 
@@ -57,6 +58,14 @@ export class ViewRecipiesComponent implements OnInit {
   }
 
   search(){
-    alert("ime " + this.name + " tezina: " + this.weight + " kategorija " + this.category + " op " + this.op + " time " + this.time + " ingredients "  + this.ingredients);
+  
+    
+    this.recipieService.searchRecipe(this.name, this.category, this.weight, this.ingredients, this.op,this.time).subscribe(data => {
+      this.recipies = data;
+      
+    },error => {
+      this.message= error.error;
+    });
+  
   }
 }

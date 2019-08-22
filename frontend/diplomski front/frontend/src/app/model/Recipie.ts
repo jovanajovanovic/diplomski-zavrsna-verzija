@@ -33,3 +33,8 @@ export interface StepField{
     numOfStep : number; 
     description : string;
 }
+
+
+export interface SendCommand {
+    command : string;
+}

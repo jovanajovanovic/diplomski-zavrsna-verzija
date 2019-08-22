@@ -16,9 +16,9 @@ import { RecipeService } from '../services/recipe.service';
 })
 export class NewRecipeFormComponent implements OnInit {
 
-   units = ["g", "kg", "ml", "dl", "l", "small spoon", "big spoon", "cup"];
+   units = ["g", "kg", "ml", "dl", "l", "small spoon", "big spoon", "cup", ""];
 
-  categories = ["SANDWICH", "BREAKFAST", "APPETIZER", "SALAD", "DINNER", "LUNCH", "SOUP", "HRONO", "DESERT"];
+  categories = ["SANDWICH", "BREAKFAST", "APPETIZER", "SALAD", "DINNER", "LUNCH", "SOUP", "HRONO", "DESERT", "PIZZA", "BURGER"];
   
    weights= ["EASY", "MIDDLE", "HARD"];
 
@@ -33,7 +33,10 @@ export class NewRecipeFormComponent implements OnInit {
   category : string = '' ;
   weight : string  = '';
   time : number = 0;
+
+  message : string = "";
   
+  recipe : Recipie;
   ngOnInit() {
     this.recipeName = '';
     this.category = '';
@@ -89,6 +92,13 @@ export class NewRecipeFormComponent implements OnInit {
   }
 
   addRecipe(){
-    this.service.newFormRecipe(this.recipeName, this.weight, this.category, this.time, this.ingItems, this.stepItems);
+    this.service.newFormRecipe(this.recipeName, this.weight, this.category, this.time, this.ingItems, this.stepItems).subscribe(
+      data => {
+        this.recipe = data[0];
+        this.router.navigate(['/main/viewRecipe'],  {queryParams: {recipe: this.recipe.pk}})
+      }, error => {
+        this.message = error.error;
+      }
+    );
   }
 }

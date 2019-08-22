@@ -23,7 +23,7 @@ const appRoutes : Routes = [
     component : MainComponent, 
     children : [
       {path: '', component: ViewRecipiesComponent},
-      {path: 'viewRecipe', component: ViewRecipeComponent},
+      {path : 'viewRecipe', component : ViewRecipeComponent},
       {path: 'newRecipeCommand', component: NewRecipeCommandComponent}, 
       {path: 'newRecipeForm', component: NewRecipeFormComponent}
     ]

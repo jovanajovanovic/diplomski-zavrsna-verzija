@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Recipie, Ingredient, Step } from '../model/Recipie';
 import { IngredientService } from '../services/ingredient.service';
 import { StepService } from '../services/step.service';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-view-recipe',
@@ -11,18 +12,33 @@ import { StepService } from '../services/step.service';
 })
 export class ViewRecipeComponent implements OnInit {
 
-  @Input() recipe : Recipie;
-
+  recipe : Recipie;
+  id : any;
   ingredients: Ingredient[];
   steps : Step[];
   message : string;
 
-  constructor(private router: Router, private ingService : IngredientService, private stepService: StepService) { }
+  constructor(private route: ActivatedRoute,private router: Router, private ingService : IngredientService, private stepService: StepService, private recipeService: RecipeService) { }
 
   ngOnInit() {
     //dopremimo sastojke i korake za recepte 
-    this.getIngredients();
-    this.getSteps();
+    this.route.queryParams.subscribe(params => this.id = params['recipe']);
+
+    this.getRecipe();
+    
+  }
+
+
+  getRecipe(){
+    this.recipeService.getRecipieById(this.id).subscribe(
+      data => {
+        this.recipe = data[0];
+        this.getIngredients();
+        this.getSteps();
+      }, error => {
+        this.message = error.error;
+      }
+    )
   }
 
   getIngredients(){

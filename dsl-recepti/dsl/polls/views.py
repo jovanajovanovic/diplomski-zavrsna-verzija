@@ -35,7 +35,7 @@ def getRecipeById(request, id):
     result = searchRecipe.search_recipies_byId(id)
     return HttpResponse(result, content_type="application/json")
 
-@api_view(['GET'])
+@api_view(['POST'])
 def search(request):
     command = request.data
 
@@ -71,7 +71,6 @@ def newRecipe(request):
 
     if success is True:
         if recipe is not None:
-            data = json.dumps(recipe, cls=CustomJsonEncoder)
-            return HttpResponse(data, content_type="application/json") #radi
+           return HttpResponse(recipe, content_type="application/json") #radi
     else:
         return HttpResponse(status=HTTP_400_BAD_REQUEST)

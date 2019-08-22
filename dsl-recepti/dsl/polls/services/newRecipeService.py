@@ -49,7 +49,8 @@ def addNewRecipe(command):
              #   dto = RecipeDTO(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=ptdto)
 
                 dto = RecipeDto(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=r.time)
-                return dto, True
+                res = serializers.serialize("json", Recipe.objects.filter(pk=r.id))
+                return res, True
     except:
         e = sys.exc_info()[0]
         print(e)

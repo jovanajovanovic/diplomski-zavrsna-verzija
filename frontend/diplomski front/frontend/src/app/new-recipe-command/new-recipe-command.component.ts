@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
+import { RecipeService } from '../services/recipe.service';
+import { Recipie } from '../model/Recipie';
 @Component({
   selector: 'app-new-recipe-command',
   templateUrl: './new-recipe-command.component.html',
@@ -9,13 +11,14 @@ import { Router } from '@angular/router';
 export class NewRecipeCommandComponent implements OnInit {
 
   command : string = '';
-  constructor(private router : Router) { }
+  constructor(private router : Router, private recipeService : RecipeService) { }
 
+  recipe : Recipie;
+  message : string = '';
   ngOnInit() {
   }
 
   onChange(event){
-    alert(event.target.value);
     var val = event.target.value;
       var newText='';
       $("#description").empty();
@@ -35,7 +38,7 @@ export class NewRecipeCommandComponent implements OnInit {
         newText += '<p><ul> <li>g </li> kg<li></li><li>ml</li> <li> dl </li> <li> l </li> <li> spooon </li> <li> cup </li> <ul></p>' 
       }else if (val == "5"){
         //"SANDWICH"|"MAIN COURSE" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER"
-        newText += '<p><ul> <li>SANDWICH</li> <li>MAIN COURSE</li> <li>APPETIZER</li><li>SALAD</li> <li>HRONO</li><li>DESERT</li> <li>DINNER </li></ul></p>'
+        newText += '<p><ul> <li>SANDWICH</li><li>LUNCH</li><li>APPETIZER</li><li>SALAD</li><li>HRONO</li></li>DESERT</li><li>DINNER</li><li>SOUP</li><li>BREAKFAST</li><li>PIZZA</li><li>BURGER</li></ul></p>'
       }
       
       $("#description").append(newText);
@@ -43,6 +46,13 @@ export class NewRecipeCommandComponent implements OnInit {
   }
 
   addRecipe(){
-    alert(this.command);
+    this.recipeService.addRecipe(this.command).subscribe(
+      data => {
+        this.recipe = data[0];
+        this.router.navigate(['/main/viewRecipe'],  {queryParams: {recipe: this.recipe.pk}})
+      }, error => {
+        this.message = "Pogresili ste negde u pisanju komande, molim Vas pogledajte jos jednom";
+      }
+    );
   }
 }

@@ -64,15 +64,15 @@ Step
     ;
 
 Quantity
-    : q=INT  unitMeasure=Unit
+    : q=FLOAT unitMeasure=Unit
     ;
 
 Unit
-    : "g" | "kg" | "spoon" | "small spoon" | "big spoon"  | "cup" | "ml" | "l" | "dl"
+    : "g" | "kg" | "small spoon" | "big spoon"  | "cup" | "ml" | "l" | "dl" | ""
     ;
 
 Category
-    : "SANDWICH"|"LUNCH" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER" | "SOUP" | "BREAKFAST"
+    : "SANDWICH"|"LUNCH" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER" | "SOUP" | "BREAKFAST" | "PIZZA" | "BURGER"
     ;
 Weight
     :   "EASY" | "MIDDLE" | "HARD"
