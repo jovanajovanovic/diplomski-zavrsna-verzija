@@ -1,0 +1,94 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+29767608[ label="{Program|}"]
+
+32570504[ label="{*Command|}"]
+
+32575448[ label="{Create_recipe|+recipe_name:STRING\l+category:Category\l+weight:Weight\l}"]
+
+32580392[ label="{Search_recipe|}"]
+
+32585336[ label="{*Search_command|}"]
+
+32590280[ label="{Search_by_name|+name:STRING\l}"]
+
+32595224[ label="{Search_by_category|+category:Category\l}"]
+
+32600168[ label="{Search_by_weight|+weight:Weight\l}"]
+
+32605112[ label="{Search_by_time|+op:Operator\l+time:INT\l}"]
+
+32611176[ label="{Search_by_ingredient|ingredients:list[STRING]\l}"]
+
+32616120[ label="{Operator|IS\|LESS THAN\|GREATHER THAN}"]
+
+32593224[ label="{Ingredient|+ingredient_name:STRING\l}"]
+
+32578392[ label="{Step|+no:INT\l+step_doing:STRING\l}"]
+
+32347480[ label="{Quantity|+q:FLOAT\l+unitMeasure:Unit\l}"]
+
+32604168[ label="{Unit|g\|kg\|small spoon\|big spoon\|cup\|ml\|l\|dl\|}"]
+
+32598168[ label="{Category|SANDWICH\|LUNCH\|APPETIZER\|SALAD\|HRONO\|DESERT\|DINNER\|SOUP\|BREAKFAST\|PIZZA\|BURGER}"]
+
+32624008[ label="{Weight|EASY\|MIDDLE\|HARD}"]
+
+32629544[ label="{Time|+time:INT\l}"]
+
+32635080[ label="{Comment|\\/\\/.*$}"]
+
+32332840[ label="{ID|}"]
+
+32344536[ label="{STRING|}"]
+
+32349480[ label="{BOOL|}"]
+
+32355016[ label="{INT|}"]
+
+29764072[ label="{FLOAT|}"]
+
+29769608[ label="{STRICTFLOAT|}"]
+
+32358552[ label="{NUMBER|}"]
+
+32335784[ label="{BASETYPE|}"]
+
+32231240[ label="{*OBJECT|}"]
+
+
+
+29767608 -> 32570504[arrowtail=diamond, dir=both, headlabel="commands 0..*"]
+32570504 -> 32575448 [dir=back]
+32570504 -> 32580392 [dir=back]
+32575448 -> 32593224[arrowtail=diamond, dir=both, headlabel="ingredients 0..*"]
+32575448 -> 32578392[arrowtail=diamond, dir=both, headlabel="steps 0..*"]
+32575448 -> 32629544[arrowtail=diamond, dir=both, headlabel="time "]
+32580392 -> 32585336[arrowtail=diamond, dir=both, headlabel="criteri 0..*"]
+32585336 -> 32590280 [dir=back]
+32585336 -> 32595224 [dir=back]
+32585336 -> 32600168 [dir=back]
+32585336 -> 32605112 [dir=back]
+32585336 -> 32611176 [dir=back]
+32593224 -> 32347480[arrowtail=diamond, dir=both, headlabel="quantity "]
+32358552 -> 29769608 [dir=back]
+32358552 -> 32355016 [dir=back]
+32335784 -> 32358552 [dir=back]
+32335784 -> 29764072 [dir=back]
+32335784 -> 32349480 [dir=back]
+32335784 -> 32332840 [dir=back]
+32335784 -> 32344536 [dir=back]
+32231240 -> 32335784 [dir=back]
+
+}
