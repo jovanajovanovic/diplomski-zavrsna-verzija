@@ -9,7 +9,6 @@ class Recipe(models.Model):
     category = models.CharField(max_length=200)
     weight = models.CharField(max_length=200)
     time = models.PositiveIntegerField()
-
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete = models.CASCADE)
     name = models.CharField(max_length=200)
@@ -18,9 +17,6 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return str(self.quantity) + " " + self.unit + " " + self.name
-
-
-
 class Step(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete = models.CASCADE)
     numOfStep = models.PositiveIntegerField()

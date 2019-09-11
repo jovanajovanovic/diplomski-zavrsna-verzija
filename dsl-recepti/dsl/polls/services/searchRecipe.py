@@ -68,15 +68,8 @@ def searchRecipeFunc(command):
         print("error")
 
 def search(name1, category, weight, time1, op):
-    #ako ne postoji name onda necemo ni traziti po njemu
-
     q = Recipe.objects.all()
-
     q1 = q.filter(name__contains=name1).filter(category__contains=category).filter(weight__contains=weight)
-
-
-    #JOS PROVERITI VREME
-
     if time1 != 0:
         if op == "LESS THAN":
             q2 = q1.filter(time__lte= time1)
@@ -84,8 +77,6 @@ def search(name1, category, weight, time1, op):
             q2 = q1.filter(time__gte= time1)
         else:
             q2 = q1.filter(time = time1)
-
-
     if (time1 != 0):
         return q2
     else:
@@ -101,17 +92,13 @@ def search_by_ingredients(ingredients):
         q1 = q.filter(name__contains=i)
         print(len(q1))
         res.add(q1)
-
     print(len(res))
-    #treba posebno za svaki sastojak napraviti listu i onda napraviti njihove presek
-    result2 = set() # ovo vracamo
-
+    result2 = set()
     if (len(ingredients)==1):
         for r in res:
             for n in r:
                 result.add(n.recipe)
         return result
-
     for m in res:
         for i in m:
             print(i.recipe.id)

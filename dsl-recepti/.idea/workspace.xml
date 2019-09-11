@@ -2,42 +2,72 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33993f1b-9835-42e7-a76b-38ce0aa9db9c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/grammar.tx" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/grammar.tx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/polls/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/polls/services/newRecipeService.py" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/polls/services/newRecipeService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/polls/services/searchRecipe.py" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/polls/services/searchRecipe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/polls/services/textXService.py" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/polls/services/textXService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/polls/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/polls/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-command/new-recipe-command.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-command/new-recipe-command.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-form/new-recipe-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-form/new-recipe-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/header/header.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/header/header.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/header/header.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/header/header.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/main/main.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/main/main.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/main/main.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/main/main.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-command/new-recipe-command.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-command/new-recipe-command.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-command/new-recipe-command.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-command/new-recipe-command.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-form/new-recipe-form.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-form/new-recipe-form.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-form/new-recipe-form.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/new-recipe-form/new-recipe-form.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/not-found-page/not-found-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/not-found-page/not-found-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/not-found-page/not-found-page.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/not-found-page/not-found-page.component.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/services/recipe.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/services/recipe.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipe/view-recipe.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipe/view-recipe.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/bg5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/insta7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/r5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/assets/images/sr9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipe/view-recipe.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipe/view-recipe.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipe/view-recipe.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipe/view-recipe.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/diplomski front/frontend/src/app/view-recipies/view-recipies.component.ts" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -62,8 +92,8 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../diplomski" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$USER_HOME$/diplomski/proba-diplomski" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -101,6 +131,20 @@
       <workItem from="1566368681212" duration="391000" />
       <workItem from="1566369235604" duration="5283000" />
       <workItem from="1566457345684" duration="12817000" />
+      <workItem from="1566561500132" duration="1718000" />
+      <workItem from="1567230232414" duration="2083000" />
+      <workItem from="1567238109501" duration="1624000" />
+      <workItem from="1567266973525" duration="4191000" />
+      <workItem from="1567438434161" duration="1816000" />
+      <workItem from="1567490518571" duration="3518000" />
+      <workItem from="1567509030734" duration="2840000" />
+      <workItem from="1567542119778" duration="29000" />
+      <workItem from="1568028985600" duration="1217000" />
+      <workItem from="1568076570956" duration="737000" />
+      <workItem from="1568077610487" duration="354000" />
+      <workItem from="1568078135675" duration="594000" />
+      <workItem from="1568094224088" duration="959000" />
+      <workItem from="1568101330005" duration="616000" />
     </task>
     <servers />
   </component>

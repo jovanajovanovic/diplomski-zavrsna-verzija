@@ -10,6 +10,12 @@
         </div>
 </div>
 
+<div *ngIf="message != ''" class="col-12 col-lg-12">
+    <div class="alert alert-warning" role="alert">
+            {{message}}
+    </div>
+</div>
+
 <div class="col-12 col-lg-12"> </div>
 <div class="receipe-content-area">
         <div class="container">
@@ -25,6 +31,8 @@
                                     <div class="col-12 col-lg-6"></div>
                                     <div class="col-12 col-lg-6">
                                         <select name="selectKind" id="selectKind" class="nice-select" [(ngModel)]="category">
+                                                <option value="" disabled selected>Category</option>
+ 
                                                 <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
                                         </select>
                                     </div>
@@ -41,7 +49,9 @@
                                     <div class="col-12 col-lg-12"></div>
 
                                     <div class="col-12 col-lg-6">
-                                        <select name="selectWeight" id="selectWeight" class="nice-select" [(ngModel)]="weight">
+                                        <select name="selectWeight" id="selectWeight" class="nice-select" [(ngModel)]="weight" aria-placeholder="Weight" >
+                                                <option value="" disabled selected>Weight</option>
+ 
                                             <option *ngFor="let w of weights" value="{{w}}"> {{w}} </option>
                                         </select>    
                                     </div>
@@ -57,6 +67,8 @@
                                             </div>
                                             <div class="col-12 col-lg-2">
                                                 <select name="unit" id="selectIngUnit" class="nice-select" [(ngModel)]="i.unit">
+                                                        <option value="" disabled selected>Unit</option>
+ 
                                                     <option *ngFor="let u of units" value="{{u}}">  {{u}} </option>										
                                                 </select>
                                             </div>
@@ -96,7 +108,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn delicious-btn mt-30" type="submit" (click)="addRecipe()"> Add receipe</button>
+                                    <button class="btn delicious-btn mt-30" type="submit" (click)="addRecipe()"> Add recipe</button>
                                 </div>
                         </div>
                     </div>
@@ -106,20 +118,7 @@
        
   
 
-   <footer class="footer-area">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
-                   
-                    <!-- Footer Logo -->
-                    <div class="footer-logo">
-                        <a (click)="router.navigate(['/main'])"><img src="assets/images/logo.png" alt=""></a>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </footer>
+  
 
 
  

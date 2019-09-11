@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
-import { RecipeService } from '../services/recipe.service';
-import { Recipie } from '../model/Recipie';
+import { RecipeService } from '../../services/recipe.service';
+import { Recipie } from '../../model/Recipie';
 @Component({
   selector: 'app-new-recipe-command',
   templateUrl: './new-recipe-command.component.html',
@@ -20,22 +20,22 @@ export class NewRecipeCommandComponent implements OnInit {
 
   onChange(event){
     var val = event.target.value;
-      var newText='';
+      var newText="";
       $("#description").empty();
       if (val == "1"){
-        newText += '<p> '+
-                  '			<strong>ADD RECIPE</strong> "recipe_name" ' +
-                  '			<strong>IN CATEGORY</strong> "name of category", ' +
-                  '			<strong>INGREDIENTS </strong>( "quantity" "measurement unit" "name of ingredient" ['+','+'] ), ' +
-                  '			<strong>STEPS</strong>( number of step : "description" ['+','+'] ), ' +
-                  '			<strong>PREPARATION TIME </strong> time "time unit", <strong> PREPARATION WEIGHT </strong> weight ' +
-                  '		</p>';
+        newText += "<p> "+
+        "			<strong>ADD RECIPE</strong> 'recipe_name' " +
+        "			<strong>IN CATEGORY</strong> 'name of category', " +
+        "			<strong>INGREDIENTS </strong>( quantity unit 'name of ingredient' [,] ), " +
+        "			<strong>STEPS</strong>( <strong> STEP </strong> number of step : 'description' [,] ), " +
+        "			<strong>PREPARATION TIME </strong> time min, <strong> PREPARATION WEIGHT </strong> weight " +
+        "		</p>";
       }else if (val == "2"){
         //easy, middle, hard
         newText += '<p><ul> <li> EASY </li> <li> MIDDLE </li> <li> HARD </li></ul></p>'
       }else if (val == "4"){
         //g, kg, ml, dl, l, spoon, cup
-        newText += '<p><ul> <li>g </li> kg<li></li><li>ml</li> <li> dl </li> <li> l </li> <li> spooon </li> <li> cup </li> <ul></p>' 
+        newText += '<p><ul> <li>g </li> kg<li></li><li>ml</li> <li> dl </li> <li> l </li> <li> small spooon </li> <li> big spoon </li> <li> cup </li> <ul></p>' 
       }else if (val == "5"){
         //"SANDWICH"|"MAIN COURSE" |"APPETIZER"|"SALAD"| "HRONO"|"DESERT"|"DINNER"
         newText += '<p><ul> <li>SANDWICH</li><li>LUNCH</li><li>APPETIZER</li><li>SALAD</li><li>HRONO</li></li>DESERT</li><li>DINNER</li><li>SOUP</li><li>BREAKFAST</li><li>PIZZA</li><li>BURGER</li></ul></p>'
@@ -51,7 +51,7 @@ export class NewRecipeCommandComponent implements OnInit {
         this.recipe = data[0];
         this.router.navigate(['/main/viewRecipe'],  {queryParams: {recipe: this.recipe.pk}})
       }, error => {
-        this.message = "Pogresili ste negde u pisanju komande, molim Vas pogledajte jos jednom";
+        this.message = "You have some error in command for adding recipe! Please try again.";
       }
     );
   }

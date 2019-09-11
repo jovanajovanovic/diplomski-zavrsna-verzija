@@ -4,8 +4,8 @@ import { VirtualTimeScheduler } from 'rxjs';
 
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
-import { IngredientField, StepField, Recipie } from '../model/Recipie';
-import { RecipeService } from '../services/recipe.service';
+import { IngredientField, StepField, Recipie } from '../../model/Recipie';
+import { RecipeService } from '../../services/recipe.service';
 
 
 
@@ -45,7 +45,7 @@ export class NewRecipeFormComponent implements OnInit {
     var i = {
       name :'',
       quantity : '0.0',
-      unit : 'g'
+      unit : ''
     };
     this.ingItems.push(i);
     this.ingNum = 1;
@@ -80,7 +80,7 @@ export class NewRecipeFormComponent implements OnInit {
     var i = {
       name :'',
       quantity : '0.0',
-      unit : 'g'
+      unit : ''
     };
     this.ingItems.push(i);
     this.ingNum = this.ingNum + 1; 
@@ -97,7 +97,7 @@ export class NewRecipeFormComponent implements OnInit {
         this.recipe = data[0];
         this.router.navigate(['/main/viewRecipe'],  {queryParams: {recipe: this.recipe.pk}})
       }, error => {
-        this.message = error.error;
+        this.message = "You have some error in command for adding recipe! Please try again.";
       }
     );
   }

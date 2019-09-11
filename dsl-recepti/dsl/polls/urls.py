@@ -8,5 +8,6 @@ urlpatterns = [
     path('search', views.search, name='searchRecipe'),
     path('getId/<int:id>', views.getRecipeById, name='searchRecipeById'),
     path('getIngredients/<int:id>', views.getIngredientsByRecipe, name='getIngredients'),
-    path('getSteps/<int:id>', views.getStepsByRecipe, name='getSteps')
+    path('getSteps/<int:id>', views.getStepsByRecipe, name='getSteps'),
+    path('deleteRecipe', views.deleteRecipe, name='deleteRecipe')
 ]

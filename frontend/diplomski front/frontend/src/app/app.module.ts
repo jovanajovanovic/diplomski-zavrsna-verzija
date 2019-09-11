@@ -4,18 +4,19 @@ import { NgbModule, NgbDropdown } from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
-import { HeaderComponent } from './header/header.component';
-import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { MainComponent } from './main pages/main/main.component';
+import { HeaderComponent } from './helper/header/header.component';
+import { NotFoundPageComponent } from './main pages/not-found-page/not-found-page.component';
 import { Routes, RouterModule } from '@angular/router';
-import { NewRecipeFormComponent } from './new-recipe-form/new-recipe-form.component';
-import { NewRecipeCommandComponent } from './new-recipe-command/new-recipe-command.component';
-import { ViewRecipiesComponent } from './view-recipies/view-recipies.component';
-import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
+import { NewRecipeFormComponent } from './new recipe/new-recipe-form/new-recipe-form.component';
+import { NewRecipeCommandComponent } from './new recipe/new-recipe-command/new-recipe-command.component';
+import { ViewRecipiesComponent } from './view/view-recipies/view-recipies.component';
+import { ViewRecipeComponent } from './view/view-recipe/view-recipe.component';
 import {RecipeService} from '../app/services/recipe.service'
 import { HttpClientModule } from '@angular/common/http';
 import { IngredientService } from './services/ingredient.service';
 import { StepService } from './services/step.service';
+import { FooterComponent } from './helper/footer/footer.component';
 
 const appRoutes : Routes = [
   {
@@ -40,7 +41,8 @@ const appRoutes : Routes = [
     NewRecipeFormComponent,
     NewRecipeCommandComponent,
     ViewRecipiesComponent,
-    ViewRecipeComponent
+    ViewRecipeComponent,
+    FooterComponent
   ],
   imports: [
     NgbModule,

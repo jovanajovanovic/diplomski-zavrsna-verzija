@@ -1,0 +1,94 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+1513380353032[ label="{Program|}"]
+
+1513380391736[ label="{*Command|}"]
+
+1513380388904[ label="{Create_recipe|+recipe_name:STRING\l+category:Category\l+weight:Weight\l}"]
+
+1513380406840[ label="{Search_recipe|}"]
+
+1513380409672[ label="{*Search_command|}"]
+
+1513380405896[ label="{Search_by_name|+name:STRING\l}"]
+
+1513380290728[ label="{Search_by_category|+category:Category\l}"]
+
+1513380301112[ label="{Search_by_weight|+weight:Weight\l}"]
+
+1513380313384[ label="{Search_by_time|+op:Operator\l+time:INT\l}"]
+
+1513380289784[ label="{Search_by_ingredient|ingredients:list[STRING]\l}"]
+
+1513380307720[ label="{Operator|IS\|LESS THAN\|GREATHER THAN}"]
+
+1513380297336[ label="{Ingredient|+ingredient_name:STRING\l}"]
+
+1513380309608[ label="{Step|+no:INT\l+step_doing:STRING\l}"]
+
+1513380294504[ label="{Quantity|+q:FLOAT\l+unitMeasure:Unit\l}"]
+
+1513380315272[ label="{Unit|g\|kg\|small spoon\|big spoon\|cup\|ml\|l\|dl\|}"]
+
+1513380308664[ label="{Category|SANDWICH\|LUNCH\|APPETIZER\|SALAD\|HRONO\|DESERT\|DINNER\|SOUP\|BREAKFAST\|PIZZA\|BURGER}"]
+
+1513380299224[ label="{Weight|EASY\|MIDDLE\|HARD}"]
+
+1513380310552[ label="{Time|+time:INT\l}"]
+
+1513380317160[ label="{Comment|\\/\\/.*$}"]
+
+1513380350200[ label="{ID|}"]
+
+1513380352088[ label="{STRING|}"]
+
+1513380398344[ label="{BOOL|}"]
+
+1513380393624[ label="{INT|}"]
+
+1513380386072[ label="{FLOAT|}"]
+
+1513380387016[ label="{STRICTFLOAT|}"]
+
+1513380389848[ label="{NUMBER|}"]
+
+1513380394568[ label="{BASETYPE|}"]
+
+1513380402120[ label="{*OBJECT|}"]
+
+
+
+1513380353032 -> 1513380391736[arrowtail=diamond, dir=both, headlabel="commands 0..*"]
+1513380391736 -> 1513380388904 [dir=back]
+1513380391736 -> 1513380406840 [dir=back]
+1513380388904 -> 1513380297336[arrowtail=diamond, dir=both, headlabel="ingredients 0..*"]
+1513380388904 -> 1513380309608[arrowtail=diamond, dir=both, headlabel="steps 0..*"]
+1513380388904 -> 1513380310552[arrowtail=diamond, dir=both, headlabel="time "]
+1513380406840 -> 1513380409672[arrowtail=diamond, dir=both, headlabel="criteri 0..*"]
+1513380409672 -> 1513380405896 [dir=back]
+1513380409672 -> 1513380290728 [dir=back]
+1513380409672 -> 1513380301112 [dir=back]
+1513380409672 -> 1513380313384 [dir=back]
+1513380409672 -> 1513380289784 [dir=back]
+1513380297336 -> 1513380294504[arrowtail=diamond, dir=both, headlabel="quantity "]
+1513380389848 -> 1513380387016 [dir=back]
+1513380389848 -> 1513380393624 [dir=back]
+1513380394568 -> 1513380389848 [dir=back]
+1513380394568 -> 1513380386072 [dir=back]
+1513380394568 -> 1513380398344 [dir=back]
+1513380394568 -> 1513380350200 [dir=back]
+1513380394568 -> 1513380352088 [dir=back]
+1513380402120 -> 1513380394568 [dir=back]
+
+}

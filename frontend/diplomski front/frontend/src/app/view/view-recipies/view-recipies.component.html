@@ -9,17 +9,20 @@
                             </div>
                         <div class="col-12 col-lg-2">
                                 <select class="nice-select" name="category" id="category" [(ngModel)]="category">
+                                    <option value="" disabled selected>Category</option>
                                     <option *ngFor= "let c of categories" value="{{c}}">{{c}}</option>
                                     
                                 </select>
                             </div>
                     <div class="col-12 col-lg-2">
                         <select class="nice-select" name="weight" id="weight" [(ngModel)]="weight">
+                            <option value="" disabled selected>Weight</option>
                             <option *ngFor="let w of weights" value="{{w}}">{{w}}</option>
                         </select>
                     </div>
                     <div class="col-12 col-lg-2">
                             <select class="nice-select" name="operator" id="operator" [(ngModel)]="op" >
+                                    <option value="" disabled selected>Op</option>
                                 <option *ngFor="let o of operators" value="{{o.value}}">{{o.op}}</option>
                             </select>
                         </div>
@@ -48,7 +51,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12 col-lg-12">
                     <div class="breadcumb-text text-center">
-                        <h2>Recipies</h2>
+                        <h2>Culinary recipes</h2>
                     </div>
                 </div>
             </div>
@@ -61,8 +64,14 @@
                 <!-- ovde ce se ispisati recepti koje imamo, klikom na see full receipe prikazace se jedan konkretan recept -->
                 <div *ngIf="recipies.length == 0" class="col-12 col-lg-12">
                         <div class="alert alert-warning" role="alert">
-                                Nije pronadjen ni jedan recept. 
+                                No found recipe! 
                         </div>
+                </div>
+
+                <div *ngIf="message != ''" class="col-12 col-lg-12">
+                    <div class="alert alert-warning" role="alert">
+                        {{message}}
+                    </div>
                 </div>
                     <div class="col-12 col-lg-6" *ngFor="let r of recipies">
                         <div class="single-top-catagory">
@@ -76,11 +85,12 @@
                             <img *ngIf="r.fields.category=='SALAD'" src="assets/images/salad.jpg" alt="">
                             <img *ngIf="r.fields.category=='APPETIZER'" src="assets/images/appetizer.jpg" alt="">
                             <img *ngIf="r.fields.category=='PIZZA'" src="assets/images/bg2.jpg" alt="">
+                            <img *ngIf="r.fields.category=='BURGER'" src="assets/images/burger.jpg" alt="">
                             <!-- Content -->
                             <div class="top-cta-content">
                                 <h3>{{r.fields.name}}</h3>
                                 <h6>{{r.fields.category}}</h6>
-                                <a (click)="chosenRecipie(r)" class="btn delicious-btn">See Full Receipe</a>
+                                <a (click)="chosenRecipie(r)" class="btn delicious-btn">See Full Recipe</a>
                             </div>
                         </div>
                     </div>
@@ -91,18 +101,4 @@
     </section>
     <!-- ##### Top Catagory Area End ##### -->
 
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
-                    
-                    <!-- Footer Logo -->
-                    <div class="footer-logo">
-                        <a (click)="clickDelicious()"><img src="assets/images/logo.png" alt=""></a>
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
-    </footer>
+   

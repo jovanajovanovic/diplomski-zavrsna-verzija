@@ -9,46 +9,41 @@ from django.core import serializers
 
 
 def addNewRecipe(command):
-    #sa fronta dobijemo zeljenu komandu
-
-
-    #sad uradimo povezivanje sa text
     try:
         m = create_model(command)
-
-        #ovde sad kreiramo recept, sastojke i ostalo
         for c in m.commands:
             if c.__class__.__name__ == "Create_recipe":
                 print ("Create recipe with name: " + c.recipe_name)
                 print("Weight: " + c.weight)
                 print("Category: " + c.category)
-               #kreiramo recept i sacuvamo ga u bazi
-
-
                 print("Preparation time: " + str(c.time.time) + "min")
-                #ubacimo potrebno vreme pripreme
                 pt = c.time.time
-
                 r = Recipe(name=c.recipe_name, weight=c.weight, category=c.category, time=pt)
-                r.save()
-                #ubacimo svaki sastojak posebno
+
                 ingredients = []
                 print( "Potrebni sastojci:")
                 for i in c.ingredients:
                     print (str(i.quantity.q) + " " + i.quantity.unitMeasure + " " + i.ingredient_name)
-                    ing = Ingredient(recipe = r, name= i.ingredient_name, quantity = i.quantity.q, unit = i.quantity.unitMeasure)
-                    ing.save()
-                    ingredients.append(IngredientDto(name=ing.name, unit=ing.unit, quantity=ing.quantity))
-                #sacuvamo korake
+                    ing = Ingredient(name= i.ingredient_name, quantity = i.quantity.q, unit = i.quantity.unitMeasure)
+                    ingredients.append(ing)
                 steps = []
+                steps_num = []
                 for s in c.steps:
                     print ("STEP " + str(s.no) + ": " + s.step_doing)
-                    st = Step(recipe = r, numOfStep= s.no, description = s.step_doing)
-                    st.save()
-                    steps.append(StepDto(num=st.numOfStep, desc=st.description))
-             #   dto = RecipeDTO(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=ptdto)
-
-                dto = RecipeDto(id=r.id, name=r.name, steps=steps, ingredients=ingredients, weight=r.weight, category=r.category, time=r.time)
+                    if steps_num.__contains__(s.no) == True:
+                        print("Vec postoji korak sa tim rednim brojem")
+                        e = Exception
+                        return e, False
+                    steps_num.append(s.no)
+                    st = Step(numOfStep= s.no, description = s.step_doing)
+                    steps.append(st)
+                r.save()
+                for i in ingredients:
+                    i.recipe = r
+                    i.save()
+                for s in steps:
+                    s.recipe = r
+                    s.save()
                 res = serializers.serialize("json", Recipe.objects.filter(pk=r.id))
                 return res, True
     except:
@@ -57,8 +52,20 @@ def addNewRecipe(command):
         return e, False
 
 
-#funkcija za izmenu recepta
+def deleteRecipe(command):
+    try:
+        m = create_model(command)
+        for c in m.commands:
+            if c.__class__.__name__ == "Delete_recipe":
+                print("Delete recipe with pk " + str(c.pk))
+                res = Recipe.objects.filter(pk=c.pk)
+                if len(res) > 0:
+                    res.delete()
+                else:
+                 return False, "Not exist"
 
-#pretraga recepata
-
-#
+            return True, "Success delete recipe"
+    except:
+        e = sys.exc_info()[0]
+        print(e)
+        return False, "Recipe does not delete"

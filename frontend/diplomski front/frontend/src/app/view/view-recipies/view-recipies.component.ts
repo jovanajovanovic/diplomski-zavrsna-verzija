@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RecipeService } from '../services/recipe.service';
-import { Recipie} from '../model/Recipie'
+import { RecipeService } from '../../services/recipe.service';
+import { Recipie} from '../../model/Recipie'
 @Component({
   selector: 'app-view-recipies',
   templateUrl: './view-recipies.component.html',
@@ -27,7 +27,7 @@ export class ViewRecipiesComponent implements OnInit {
 
   oneRecipie : Recipie;
   recipies : Recipie[];
-  message : string;
+  message : string = '';
   constructor(private router: Router, private recipieService : RecipeService) { }
 
   ngOnInit() {
@@ -53,9 +53,7 @@ export class ViewRecipiesComponent implements OnInit {
   }
 
 
-  clickDelicious(){
-    this.prikaziJedan = false;
-  }
+  
 
   search(){
   
@@ -65,6 +63,7 @@ export class ViewRecipiesComponent implements OnInit {
       
     },error => {
       this.message= error.error;
+      this.message = "You have some error in search command!"
     });
   
   }
